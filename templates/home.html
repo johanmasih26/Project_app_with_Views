@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>This is Home Page...</h1>
+    <table>
+        <tr>
+          <th>Project</th>
+          <th>Description</th>
+          
+        </tr>
+        
+        {% for project in projects %}
+        <tr>
+            {% comment %} <td>{{project.id}}</td> {% endcomment %}
+            <td><a href="{% url 'project' project.id %}">{{project.title}}</a></td>
+            <td>{{project.description}}</td>
+            <td><a href="{% url 'project_update' project.id %}">Edit</a></td>
+            <td><a href="{% url 'project_delete' project.id %}">Delete</a></td>
+          </tr>
+        {% endfor %}
+      </table>
+{% endblock content %}

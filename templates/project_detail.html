@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>This is Project Detail Page...</h1>
+    <table>
+        <tr>
+          <th>Project</th>
+          <th>Description</th>
+          
+        </tr>
+        <td>{{project.title}}</td>
+        <td>{{project.description}}</td>
+        
+      </table>
+      {% for tag in project.tags.all  %}
+        <tr>
+            <td>{{tag}}</td>
+           
+          </tr>
+        {% endfor %}
+
+      {% for review in project.reviews.all %}
+      <tr>
+          <td><h2>{{review.body}}</h2></td>
+         
+        </tr>
+      {% endfor %}
+{% endblock content %}
