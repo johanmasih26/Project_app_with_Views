@@ -1,0 +1,12 @@
+<h1>you want delete {{order}}?</h1>
+
+<form action="{% url 'order_delete' order.id %}" method='post'>
+
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>
+
+
+
+
+

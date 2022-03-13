@@ -1,1 +1,24 @@
-<h1>test1 file ....</h1>
+<h1>test1 home</h1>
+
+{% for order in orders %}
+    {{order.status}}
+    <a href="{% url 'order_update' order.id %}">{{order.customer.name}}</a>
+    {{order.product.name}}
+    {{order.data_created}}
+    {{order.note}}
+    <a href="{% url 'order_delete' order.id %}">Delete</a>
+        <br>
+{% endfor %}
+<br><br><hr>
+{% for customer in customers %}
+    {{customer.name}}
+    {{customer.price}}
+    {{customer.description}}
+    <br>
+    {% endfor %}
+    <br><hr>
+
+    <form action="" method="get">
+        {{filter.form}}
+    <input type="submit" value="Search">
+    </form>
