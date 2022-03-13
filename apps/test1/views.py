@@ -3,6 +3,8 @@ from .models import Customer, Order, Product
 from django.shortcuts import redirect, render
 from django.views import View
 from .filter import orderFilter
+from .forms import CreateUserForm
+
 
 class IndexView(View):
 
@@ -60,3 +62,29 @@ class OrderDeleteView(View):
         return redirect('index')
         # return render(request, 'test1.html', )
         
+
+
+class LoginView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'test1/login.html')
+    def post(self, request, *args, **kwargs):
+        return render(request, 'test1/login.html')
+
+
+class RegisterView(View):
+    def get(self, request, *args, **kwargs):
+        form = CreateUserForm()
+        return render(request, 'test1/register.html',{'form':form})
+    def post(self, request, *args, **kwargs):
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return render(request, 'test1/register.html', {'form':form})
+
+        
+
+
+
+
+
+
